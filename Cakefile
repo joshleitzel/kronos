@@ -73,3 +73,7 @@ task 'build', 'compile src/ and tests/ directories and watch for changes', (opti
   util.log 'Building...'
   setupBuild 'src', 'lib'
   setupBuild 'tests/src', 'tests'
+
+task 'docs', 'compile docs using docco', ->
+  util.log 'Compiling docs to docs/ dir...'
+  exec 'docco src/*.coffee'

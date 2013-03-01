@@ -22,5 +22,6 @@
     "assert": "*",
     "sinon": "*",
     "cheerio": "*"
+    "docco": "*"
   }
 }
