@@ -15,7 +15,7 @@
         if (++count === 5) return done();
       });
     });
-    return it('should set an interval with a condition', function(done) {
+    it('should set an interval with a condition', function(done) {
       var cond, count;
       count = 0;
       cond = function() {
@@ -28,6 +28,7 @@
         return count++;
       });
     });
+    return it('should set an interval with a variable interval');
   });
 
 }).call(this);

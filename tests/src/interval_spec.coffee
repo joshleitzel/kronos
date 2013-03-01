@@ -16,3 +16,4 @@ describe 'Interval', ->
         true
     Chronos.until(cond).every('50 ms').do ->
       count++
+  it 'should set an interval with a variable interval'
