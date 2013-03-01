@@ -2,7 +2,7 @@
   "author": "Josh Leitzel <joshleitzel@gmail.com> (http://joshleitzel.com/)",
   "name": "chronos",
   "description": "Library for calculating and formatting dates and times and simple timeout/interval management",
-  "keywords": ["date", "time", "timeout", "interval"]
+  "keywords": ["date", "time", "timeout", "interval"],
   "version": "0.1.0",
   "homepage": "https://github.com/joshleitzel/chronos",
   "repository": {
