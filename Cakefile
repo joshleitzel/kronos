@@ -76,4 +76,5 @@ task 'build', 'compile src/ and tests/ directories and watch for changes', (opti
 
 task 'docs', 'compile docs using docco', ->
   util.log 'Compiling docs to docs/ dir...'
+  exec 'rm -rf docs'
   exec 'docco src/*.coffee'

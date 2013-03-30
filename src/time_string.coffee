@@ -1,4 +1,5 @@
 TimeUtils = require './time_utils'
+ChronosError = require './chronos_error'
 
 class TimeString
   unitMap =
@@ -26,13 +27,16 @@ class TimeString
     'y': TimeUtils.YEAR_MS
     'year': TimeUtils.YEAR_MS
     'years': TimeUtils.YEAR_MS
-  
+
   constructor: (phrase) ->
     components = phrase.split(' ')
-    
+
     @quantity = parseInt(components[0])
     @unit = components[1]
-  
+
+    unless /^\d+$/.test @quantity
+      throw new ChronosError 'Unparseable time string'
+
   toMilliseconds: ->
     @quantity * unitMap[@unit]
 

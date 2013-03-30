@@ -10,7 +10,7 @@
   describe('ChronosTime', function() {
     describe('proxy functions from date object', function() {
       var time;
-      time = new ChronosTime(new Date(2000, 2, 3, 4, 5, 6, 7));
+      time = Chronos["new"](2000, 2, 3, 4, 5, 6, 7);
       it('gets the year', function() {
         return assert.equal(time.year(), 2000);
       });
@@ -35,7 +35,7 @@
     });
     return describe('arithmetic', function() {
       var time;
-      time = new ChronosTime(1360559971051);
+      time = Chronos["new"](1360559971051);
       it('adds time', function() {
         return assert.equal(time.plus('2 minutes').toMilliseconds(), 1360560091051);
       });

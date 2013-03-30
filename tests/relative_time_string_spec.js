@@ -1,9 +1,11 @@
 (function() {
-  var ChronosTime, RelativeTimeString, assert;
+  var Chronos, ChronosTime, RelativeTimeString, assert;
 
   assert = require('assert');
 
   RelativeTimeString = require('../lib/relative_time_string');
+
+  Chronos = require('../lib/chronos');
 
   ChronosTime = require('../lib/chronos_time');
 
@@ -20,9 +22,7 @@
       milliseconds = fromNowTimeStringsAsMilliseconds[timeString];
       _results.push((function(timeString, milliseconds) {
         return it(timeString.split(' ')[1], function() {
-          return assert.equal(new RelativeTimeString(timeString, {
-            context: new ChronosTime(testDate)
-          }).toMilliseconds(), milliseconds);
+          return assert.equal(new RelativeTimeString(timeString, Chronos["new"](testDate)).toMilliseconds(), milliseconds);
         });
       })(timeString, milliseconds));
     }

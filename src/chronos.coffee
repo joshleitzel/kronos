@@ -1,8 +1,6 @@
-Interval =            require './interval'
-Timeout =             require './timeout'
-ChronosTime =         require './chronos_time'
-RelativeTimeString =  require './relative_time_string'
-TimeParser =          require './time_parser'
+Interval =                  require './interval'
+Timeout =                   require './timeout'
+TimeParser =  require './time_parser'
 
 class Chronos
   in: (relativeTimeString) ->     new Timeout timeString: relativeTimeString
@@ -10,7 +8,7 @@ class Chronos
   until: (condition) ->           new Interval condition: condition
   unless: (condition) ->          new Timeout condition: condition
   new: (args...) ->               new TimeParser(args)
-  now: ->                         new TimeParser(new Date())
+  now: ->                         new TimeParser()
 
 if module?
   module.exports = new Chronos

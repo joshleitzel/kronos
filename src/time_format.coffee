@@ -1,4 +1,3 @@
-TimeWrapper = require './time_wrapper'
 TimeUtils = require './time_utils'
 
 class TimeFormat
@@ -6,15 +5,15 @@ class TimeFormat
     direction = if direction is 'future' then 'from now' else 'ago'
     s = if quantity > 1 then 's' else ''
     "#{quantity} #{identifier}#{s} #{direction}"
-  
+
   constructor: (milliseconds) ->
     @milliseconds = milliseconds
-  
+
   format: ->
     elapsed = Date.now() - @milliseconds
     direction = if elapsed < 0 then 'future' else 'past'
     elapsed = Math.abs(elapsed)
-    
+
     if elapsed < TimeUtils.MINUTE_MS
       _phrase 'second', Math.round(elapsed / TimeUtils.SECOND_MS), direction
     else if elapsed < TimeUtils.HOUR_MS
