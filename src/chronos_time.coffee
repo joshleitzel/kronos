@@ -1,44 +1,33 @@
-# 
-# class TimeWrapper
-#   constructor: (milliseconds) ->
-#     @milliseconds = if milliseconds then milliseconds else Date.now()
-#     @dateObj = new Date(@milliseconds)
-#   toMilliseconds: ->
-#     @milliseconds
-# 
-# module.exports = TimeWrapper
+`
+if (typeof define !== 'function') { var define = require('amdefine')(module) }
+`
 
-TimeString = require './time_string'
-TimeFormat = require './time_format'
-ChronosDom = require './chronos_dom'
+define ['./time_string', './time_format', './chronos_dom'], (TimeString, TimeFormat, ChronosDom) ->
+  class ChronosTime
+    constructor: (dateObj) -> @dateObj = dateObj
+    toMilliseconds: -> @dateObj.getTime()
+    getDateObject: -> @dateObj
 
-class ChronosTime
-  constructor: (dateObj) -> @dateObj = dateObj
-  toMilliseconds: -> @dateObj.getTime()
-  getDateObject: -> @dateObj
+    # Arithmetic
+    plus: (input) ->
+      new ChronosTime new Date(@toMilliseconds() + new TimeString(input).toMilliseconds())
+    minus: (input) ->
+      new ChronosTime new Date(@toMilliseconds() - new TimeString(input).toMilliseconds())
 
-  # Arithmetic
-  plus: (input) ->
-    new ChronosTime new Date(@toMilliseconds() + new TimeString(input).toMilliseconds())
-  minus: (input) ->
-    new ChronosTime new Date(@toMilliseconds() - new TimeString(input).toMilliseconds())
+    # From the Date object
+    year: -> parseInt(@dateObj.getFullYear())
+    # In our parsing process we remove the zero-indexing that JavaScript natively applies to months
+    month: -> parseInt(@dateObj.getMonth()) + 1
+    day: -> parseInt(@dateObj.getDate())
+    hour: -> parseInt(@dateObj.getHours())
+    minute: -> parseInt(@dateObj.getMinutes())
+    second: -> parseInt(@dateObj.getSeconds())
+    millisecond: -> parseInt(@dateObj.getMilliseconds())
+    toString: -> @dateObj.toString()
 
-  # From the Date object
-  year: -> parseInt(@dateObj.getFullYear())
-  # In our parsing process we remove the zero-indexing that JavaScript natively applies to months
-  month: -> parseInt(@dateObj.getMonth()) + 1
-  day: -> parseInt(@dateObj.getDate())
-  hour: -> parseInt(@dateObj.getHours())
-  minute: -> parseInt(@dateObj.getMinutes())
-  second: -> parseInt(@dateObj.getSeconds())
-  millisecond: -> parseInt(@dateObj.getMilliseconds())
-  toString: -> @dateObj.toString()
+    # Format
+    timeAgo: -> new TimeFormat(@toMilliseconds()).format()
+    timeFromNow: -> @timeAgo() # no difference, just for developer convenience
 
-  # Format
-  timeAgo: -> new TimeFormat(@toMilliseconds()).format()
-  timeFromNow: -> @timeAgo() # no difference, just for developer convenience
-
-  live: (domId, callback, interval = '5 seconds') ->
-    ChronosDom.live(domId, callback, @, interval)
-
-module.exports = ChronosTime
+    live: (domId, callback, interval = '5 seconds') ->
+      ChronosDom.live(domId, callback, @, interval)

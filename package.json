@@ -21,7 +21,9 @@
     "mocha": "*",
     "assert": "*",
     "sinon": "*",
-    "cheerio": "*"
-    "docco": "*"
+    "cheerio": "*",
+    "docco": "*",
+    "should": "*",
+    "amdefine": "*"
   }
 }

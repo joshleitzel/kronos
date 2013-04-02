@@ -78,3 +78,7 @@ task 'docs', 'compile docs using docco', ->
   util.log 'Compiling docs to docs/ dir...'
   exec 'rm -rf docs'
   exec 'docco src/*.coffee'
+
+task 'compile', 'compile all source files into a single, browser-ready file', ->
+  util.log 'Compiling...'
+  exec 'coffee -c -j chronos.js src/*'

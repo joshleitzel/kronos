@@ -1,6 +1,9 @@
-class ChronosError extends Error
-  name: 'ChronosError'
-  constructor: (message) ->
-    @message = message
+`
+if (typeof define !== 'function') { var define = require('amdefine')(module) }
+`
 
-module.exports = ChronosError
+define ->
+  class ChronosError extends Error
+    name: 'ChronosError'
+    constructor: (message) ->
+      @message = message

@@ -1,19 +1,20 @@
-TimeString = require './time_string'
+`
+if (typeof define !== 'function') { var define = require('amdefine')(module) }
+`
 
-class RelativeTimeString extends TimeString
-  constructor: (phrase, context) ->
-    components = phrase.split(' ')
-    @direction = if components[2] is 'ago' then 'past' else 'future'
-    @context = context
+define ['./time_string'], (TimeString) ->
+  class RelativeTimeString extends TimeString
+    constructor: (phrase, context) ->
+      components = phrase.split(' ')
+      @direction = if components[2] is 'ago' then 'past' else 'future'
+      @context = context
 
-    super(phrase)
+      super(phrase)
 
-  toMilliseconds: ->
-    milliseconds = super
+    toMilliseconds: ->
+      milliseconds = super
 
-    if @direction is 'past'
-      @context.toMilliseconds() - milliseconds
-    else
-      @context.toMilliseconds() + milliseconds
-
-module.exports = RelativeTimeString
+      if @direction is 'past'
+        @context.toMilliseconds() - milliseconds
+      else
+        @context.toMilliseconds() + milliseconds
