@@ -1,6 +1,4 @@
-`
-if (typeof define !== 'function') { var define = require('amdefine')(module) }
-`
+`if (typeof define !== 'function') { var define = require('amdefine')(module); }`
 
 define ['./chronos_time', './chronos_error', './relative_time_string'], (ChronosTime, ChronosError, RelativeTimeString) ->
   _isString = (input) -> Object.prototype.toString.call(input) is '[object String]'

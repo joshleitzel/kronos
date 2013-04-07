@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<head>
+  <title>Basics - Chronos Examples</title>
+  <script src="require.js"></script>
+  <script type="text/javascript">
+    require.config({
+      paths: {
+          //Comment out this line to go back to loading
+          //the non-optimized main.js source file.
+          "main": "main-built"
+      }
+    });
+    require(["main"], function(Chronos) {
+      console.log('hello')
+    });
+</script>
+</head>
+<body>
+  <h1>Hello</h1>
+</body>
+</html>

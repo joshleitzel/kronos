@@ -1,6 +1,4 @@
-`
-if (typeof define !== 'function') { var define = require('amdefine')(module) }
-`
+`if (typeof define !== 'function') { var define = require('amdefine')(module); }`
 
 define ['./interval', './timeout', './time_parser'], (Interval, Timeout, TimeParser) ->
   in: (relativeTimeString) ->     new Timeout timeString: relativeTimeString

@@ -81,4 +81,4 @@ task 'docs', 'compile docs using docco', ->
 
 task 'compile', 'compile all source files into a single, browser-ready file', ->
   util.log 'Compiling...'
-  exec 'coffee -c -j chronos.js src/*'
+  exec 'coffee -c -j lib/chronos.compiled.js src/*'

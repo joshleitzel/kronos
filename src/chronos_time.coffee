@@ -1,6 +1,4 @@
-`
-if (typeof define !== 'function') { var define = require('amdefine')(module) }
-`
+`if (typeof define !== 'function') { var define = require('amdefine')(module); }`
 
 define ['./time_string', './time_format', './chronos_dom'], (TimeString, TimeFormat, ChronosDom) ->
   class ChronosTime
