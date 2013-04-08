@@ -81,4 +81,9 @@ task 'docs', 'compile docs using docco', ->
 
 task 'compile', 'compile all source files into a single, browser-ready file', ->
   util.log 'Compiling...'
-  exec 'coffee -c -j lib/chronos.compiled.js src/*'
+  exec 'coffee -c -j build/chronos.compiled.js src/*'
+
+task 'optimize', 'run the require.js optimizer', ->
+  exec 'r.js -o baseUrl=lib name=chronos out=build/chronos.optimized.js', (err, stdout, stderr) ->
+    console.log(stdout)
+    console.log(stderr)
