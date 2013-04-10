@@ -5,7 +5,7 @@ define ['./time_utils', './chronos_error'], (TimeUtils, ChronosError) ->
     unitMap =
       'ms': 1
       'millisecond': 1
-      'mmilliseconds': 1
+      'milliseconds': 1
       's': TimeUtils.SECOND_MS
       'second': TimeUtils.SECOND_MS
       'seconds': TimeUtils.SECOND_MS

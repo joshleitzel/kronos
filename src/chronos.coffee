@@ -6,3 +6,5 @@ define ['./interval', './timeout', './time_parser'], (Interval, Timeout, TimePar
   until: (condition) ->           new Interval condition: condition
   unless: (condition) ->          new Timeout condition: condition
   new: (args...) ->               new TimeParser(args)
+  timeUntil: (args) ->            @new().timeUntil(@new(args))
+  timeSince: (args) ->            @new().timeSince(@new(args))
