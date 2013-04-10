@@ -69,7 +69,7 @@ describe 'Chronos', ->
     it 'with year-month', ->
       Chronos.new(2005, 1).toMilliseconds().should.equal new Date(2005, 0).getTime()
     it 'with year', ->
-      Chronos.new(2005).toMilliseconds().should.equal new Date(2005, 0, 01).getTime()
+      Chronos.new(2005).toMilliseconds().should.equal new Date(2005, 0, 1).getTime()
     it 'with milliseconds', ->
       Chronos.new(testTime.getTime()).toMilliseconds().should.equal testTime.getTime()
     it 'with a date object', ->
@@ -77,7 +77,7 @@ describe 'Chronos', ->
     it 'with relative times and context', ->
       Chronos.new('1 hour ago', testTime).toMilliseconds().should.equal testTime.getTime() - 60 * 60 * 1000
     it 'with formatted dates', ->
-      Chronos.new('Aug 9, 1995').toMilliseconds().should.equal new Date(1995, 07, 09).getTime()
+      Chronos.new('Aug 9, 1995').toMilliseconds().should.equal new Date(1995, 7, 9).getTime()
   describe 'invalid inputs', ->
     it 'with unrecognizeable language string', ->
       (-> Chronos.new('meaningless')).should.throw 'Unparseable language string: meaningless'
