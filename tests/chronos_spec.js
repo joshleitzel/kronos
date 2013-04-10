@@ -46,12 +46,6 @@
     });
     describe('arithmetic', function() {
       describe('calculates the time until another time', function() {
-        it('in milliseconds', function() {
-          return Chronos["new"]('100 milliseconds ago').timeUntil('50 milliseconds from now').milliseconds().should.equal(50);
-        });
-        it('in seconds', function() {
-          return Chronos["new"]('20 seconds ago').timeUntil('10 seconds from now').seconds().should.equal(10);
-        });
         it('in minutes', function() {
           return Chronos.timeUntil('5 minutes from now').minutes().should.equal(5);
         });

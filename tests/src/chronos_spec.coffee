@@ -26,10 +26,6 @@ describe 'Chronos', ->
         Chronos.new('2 days ago').isFuture().should.equal false
   describe 'arithmetic', ->
     describe 'calculates the time until another time', ->
-      it 'in milliseconds', ->
-        Chronos.new('100 milliseconds ago').timeUntil('50 milliseconds from now').milliseconds().should.equal 50
-      it 'in seconds', ->
-        Chronos.new('20 seconds ago').timeUntil('10 seconds from now').seconds().should.equal 10
       it 'in minutes', ->
         Chronos.timeUntil('5 minutes from now').minutes().should.equal 5
       it 'in hours', ->

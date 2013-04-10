@@ -12,10 +12,10 @@ define ['./time_string', './time_format', './chronos_dom', './time_span'], (Time
     minus: (input) ->
       new ChronosTime new Date(@toMilliseconds() - new TimeString(input).toMilliseconds())
     timeUntil: (time) ->
-      chronosTime = (require './chronos').new(time, @)
+      chronosTime = (require './chronos').new(time)
       new TimeSpan(chronosTime.toMilliseconds() - @toMilliseconds())
     timeSince: (time) ->
-      chronosTime = (require './chronos').new(time, @)
+      chronosTime = (require './chronos').new(time)
       new TimeSpan(@toMilliseconds() - chronosTime.toMilliseconds())
 
     # From the Date object
