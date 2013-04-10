@@ -1,15 +1,18 @@
-# Chronos.js — a JavaScript date & time library you won’t hate
+# Chronos.js
+## Painless dates and times in JavaScript
 [![Build Status](https://travis-ci.org/joshleitzel/chronos.png?branch=master)](https://travis-ci.org/joshleitzel/chronos)
 
-## What is Chronos?
+### What is Chronos?
 
 Chronos is a small library that aims to take the mystery out of working with dates and times in JavaScript.
 
-In essence, Chronos is a wrapper of the JavaScript [`Date`](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Date/) class, [`setTimeout`](https://developer.mozilla.org/en/DOM/window.setTimeout), [`setInterval`](https://developer.mozilla.org/en/DOM/window.setInterval), and other date/time functions.
-
 ## Stability
 
-Chronos is *not yet stable*! It is definitely alpha-quality right now and things will change rapidly as I develop this over the next few weeks and months. If you’re interested in helping, please open issues, send pull requests, and send feature requests.
+Chronos is alpha-quality software right now and is being aggressively developed. You’re encouraged to play with it and hack on it all you like and contribute to the project, but it’s not yet production-ready.
+
+## Environments
+
+Chronos can be run in Node or in a web browser as an AMD module.
 
 ## Features
 ### Initialization & the `Chronos` Object
@@ -38,6 +41,12 @@ Chronos.now().plus('2 minutes'); // Sat, 28 Jul 2012 08:37:52 GMT
 Chronos.now().plus('1 hour'); // Sat, 28 Jul 2012 09:35:52 GMT
 Chronos.now().minus('5 weeks'); // Sat, 23 Jun 2012 08:35:52 GMT
 Chronos.now().minus('1 year'); // Wed, 23 Jul 2011 08:35:52 GMT
+```
+
+```
+Chronos.now(); // January 1
+Chronos.timeUntil('January 6'); // 5 days
+Chronos.timeSince('December 20'); // 11 days
 ```
 
 ### Timeouts & Intervals
@@ -136,8 +145,6 @@ Chronos.new('37 seconds ago').live('#timestamp', (time) -> time.ago())
 ## Tests
 
 A full test suite is available, with all tests written in [Mocha](http://visionmedia.github.com/mocha/) and [CoffeeScript](http://coffeescript.org).
-
-Assuming you have Mocha installed, just run:
 
 ```
 mocha tests
