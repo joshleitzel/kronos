@@ -3,6 +3,19 @@ Chronos = require '../lib/chronos'
 
 describe 'Chronos', ->
   testTime = new Date()
+  describe 'top level information', ->
+    it 'gets the current timezone offset', ->
+      Chronos.get('timezoneOffset').should.equal 300
+    it 'gets the current timezone', ->
+      process.env.TZ = 'America/New_York'
+      Chronos.get('timezone').should.equal 'America/New_York'
+    it 'yes detects timezone changes', (done) ->
+      process.env.TZ = 'America/New_York'
+      Chronos.on 'change:timezone', ((oldTZ, newTZ)->
+        if oldTZ is 'America/New_York' and newTZ is 'America/Chicago'
+          done()
+      ), '1ms'
+      process.env.TZ = 'America/Chicago'
   describe 'inspection', ->
     describe 'tells if the time is after another time', ->
       it 'if it is', ->

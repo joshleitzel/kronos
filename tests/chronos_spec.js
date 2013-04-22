@@ -10,6 +10,24 @@
     var testTime;
 
     testTime = new Date();
+    describe('top level information', function() {
+      it('gets the current timezone offset', function() {
+        return Chronos.get('timezoneOffset').should.equal(300);
+      });
+      it('gets the current timezone', function() {
+        process.env.TZ = 'America/New_York';
+        return Chronos.get('timezone').should.equal('America/New_York');
+      });
+      return it('yes detects timezone changes', function(done) {
+        process.env.TZ = 'America/New_York';
+        Chronos.on('change:timezone', (function(oldTZ, newTZ) {
+          if (oldTZ === 'America/New_York' && newTZ === 'America/Chicago') {
+            return done();
+          }
+        }), '1ms');
+        return process.env.TZ = 'America/Chicago';
+      });
+    });
     describe('inspection', function() {
       describe('tells if the time is after another time', function() {
         it('if it is', function() {
