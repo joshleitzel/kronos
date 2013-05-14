@@ -1,5 +1,4 @@
 # Chronos.js [![Build Status](https://travis-ci.org/joshleitzel/chronos.png?branch=master)](https://travis-ci.org/joshleitzel/chronos)
-## Painless dates and times in JavaScript
 
 Chronos is a small library that aims to take the mystery out of working with dates and times in JavaScript.
 
