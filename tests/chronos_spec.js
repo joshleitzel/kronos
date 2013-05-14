@@ -16,10 +16,38 @@
     var testTime;
 
     testTime = new Date();
-    describe('top level information', function() {
+    describe('config', function() {
+      describe('with property-value pairs', function() {
+        it('sets a config param', function() {
+          Chronos.config('locale', 'en-US');
+          return Chronos.config('locale').should.equal('en-US');
+        });
+        return it('throws an error with bad config', function() {
+          return (function() {
+            return Chronos.config('unrecognizedParam', 'nothing');
+          }).should["throw"]('Unrecognized config parameter: unrecognizedParam');
+        });
+      });
+      return describe('with a property-value object', function() {
+        it('sets config params', function() {
+          Chronos.config({
+            locale: 'en-US'
+          });
+          return Chronos.config('locale').should.equal('en-US');
+        });
+        return it('throws an error with bad config', function() {
+          return (function() {
+            return Chronos.config({
+              unrecognizedParam: 'nothing'
+            });
+          }).should["throw"]('Unrecognized config parameter: unrecognizedParam');
+        });
+      });
+    });
+    describe('information', function() {
       it('gets the current timezone', function() {
         process.env.TZ = 'America/New_York';
-        return Chronos.get('timezone').should.equal('America/New_York');
+        return Chronos.info('timezone').should.equal('America/New_York');
       });
       return it('detects timezone changes', function(done) {
         process.env.TZ = 'America/New_York';

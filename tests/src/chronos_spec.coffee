@@ -6,10 +6,23 @@ TimeString  = require '../lib/time_string'
 
 describe 'Chronos', ->
   testTime = new Date()
-  describe 'top level information', ->
+  describe 'config', ->
+    describe 'with property-value pairs', ->
+      it 'sets a config param', ->
+        Chronos.config 'locale', 'en-US'
+        Chronos.config('locale').should.equal 'en-US'
+      it 'throws an error with bad config', ->
+        (-> Chronos.config('unrecognizedParam', 'nothing')).should.throw 'Unrecognized config parameter: unrecognizedParam'
+    describe 'with a property-value object', ->
+      it 'sets config params', ->
+        Chronos.config locale: 'en-US'
+        Chronos.config('locale').should.equal 'en-US'
+      it 'throws an error with bad config', ->
+        (-> Chronos.config(unrecognizedParam: 'nothing')).should.throw 'Unrecognized config parameter: unrecognizedParam'
+  describe 'information', ->
     it 'gets the current timezone', ->
       process.env.TZ = 'America/New_York'
-      Chronos.get('timezone').should.equal 'America/New_York'
+      Chronos.info('timezone').should.equal 'America/New_York'
     it 'detects timezone changes', (done) ->
       process.env.TZ = 'America/New_York'
       Chronos.on 'change:timezone', ((oldTZ, newTZ)->
