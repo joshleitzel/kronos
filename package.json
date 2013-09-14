@@ -1,6 +1,6 @@
 {
   "author": "Josh Leitzel <joshleitzel@gmail.com> (http://joshleitzel.com/)",
-  "name": "chronos",
+  "name": "kronos",
   "description": "Library for calculating and formatting dates and times and simple timeout/interval management",
   "keywords": [
     "date",
@@ -9,15 +9,15 @@
     "interval"
   ],
   "version": "0.1.0",
-  "homepage": "https://github.com/joshleitzel/chronos",
+  "homepage": "https://github.com/joshleitzel/kronos",
   "repository": {
     "type": "git",
-    "url": "git://github.com/joshleitzel/chronos.git"
+    "url": "git://github.com/joshleitzel/kronos.git"
   },
   "scripts": {
     "test": "mocha tests"
   },
-  "main": "./chronos.js",
+  "main": "./kronos.js",
   "engines": {
     "node": ">= 0.6"
   },
