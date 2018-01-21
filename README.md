@@ -20,7 +20,7 @@ Kronos can be run in Node or in a web browser as an AMD module.
 
 ## Tests
 
-A full test suite is available, with all tests written in [Mocha](http://visionmedia.github.com/mocha/) and [CoffeeScript](http://coffeescript.org).
+A full test suite is available, with all tests written in [Mocha](http://mochajs.org/) and [CoffeeScript](http://coffeescript.org).
 
 ```
 mocha tests
